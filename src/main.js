@@ -34,7 +34,7 @@ const getElementsWithSubstring = (substr) => {
 }
 
 
-// Выделение крансым найденных ячеек с подстрокой
+// Выделение красным найденных ячеек с подстрокой
 const colorElementsWithSubstring = (elements) => {
     elements.map(elem => elem.querySelector(".cell__text").classList.add("found-cell"));
 } 
