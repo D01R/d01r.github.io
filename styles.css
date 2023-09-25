@@ -1,0 +1,196 @@
+@import "reset.css";
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+*{
+    font-family: 'Comfortaa', cursive;
+}
+
+:root {
+    --main-bg-color: #0b0c10;
+    --bg-color: #1f2833;
+    --font-color: #c6c7c8;
+    --accent-color: #66fcf1;
+    --additional-accent-color: #45a29e;
+    --index-font: calc(1vw + 1vh);
+    --found-cell: #fe4141;
+}
+
+body {
+    background-color: var(--main-bg-color);
+    color: var(--font-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 1600px;
+    min-width: 90%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+/* Стили дла поля поиска */
+.search {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 650px;
+    margin: 15px 0;
+    font-size: min(calc(var(--index-font) * 1.6), 22px);
+}
+
+.search__fields {
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.search__input {
+    width: 150px;
+    flex: 1 1 150px;
+    margin-right: 10px;
+    background-color: transparent;
+    color: var(--accent-color);
+    outline: none;
+    border: 1px solid var(--additional-accent-color);
+    border-radius: 10px;
+    padding: 10px 15px;
+    max-height: 50px;
+    transition: 1s;
+}
+
+.search__input:focus {
+    box-shadow: 
+        0 0 7px var(--accent-color),
+        0 0 12px var(--accent-color),
+        0 0 23px var(--accent-color),
+        0 0 30px var(--additional-accent-color);
+}
+
+.search__button {
+    width: 25%;
+    background-color: transparent;
+    color: var(--accent-color);
+    border: 1px solid var(--additional-accent-color);
+    border-radius: 10px;
+    max-height: 50px;
+    transition: 0.7s;
+}
+
+.search__button:hover {
+    border-color: var(white);
+    color: white;
+    box-shadow: 
+        0 0 7px var(--accent-color),
+        0 0 12px var(--accent-color),
+        0 0 23px var(--accent-color),
+        0 0 30px var(--additional-accent-color);
+    transform: scale(1.05);
+}
+
+.search__button:active {
+    background-color: var(--additional-accent-color);
+    color: var(--font-color);
+    transform: scale(0.9);
+}
+
+.search__result {
+    color: var(--additional-accent-color);
+    text-align: center;
+    height: min(calc(var(--index-font) * 1.6), 22px);
+}
+
+/* Стили для таблицы */
+.table {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.cell__header {
+    display: none;
+    color: var(--additional-accent-color);
+}
+
+.table__cell {
+    border: 1px solid var(--accent-color);
+    font-size: calc(var(--index-font));
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.header-cell {
+    font-size: calc(var(--index-font) * 1.1);
+    color: var(--accent-color);
+}
+
+.cell {
+    transition: 0.7s;
+}
+
+.cell:hover .cell__text {
+    color: white;
+    text-shadow: 
+        0 0 7px var(--accent-color),
+        0 0 12px var(--accent-color),
+        0 0 23px var(--accent-color),
+        0 0 30px var(--additional-accent-color);
+}
+
+/* Стили для выделения найденных ячеек по подстроке */
+.found-cell {
+    color: white;
+    transform: scale(1.2);
+    text-shadow: 
+        0 0 4px var(--found-cell),
+        0 0 7px var(--found-cell),
+        0 0 12px var(--found-cell),
+        0 0 23px var(--found-cell),
+        0 0 30px var(--found-cell);
+}
+
+@media (max-width: 700px) {
+    .table__cell {
+        font-size: calc(var(--index-font) * 0.73);
+    }
+
+    .header-cell {
+        font-size: calc(var(--index-font) * 0.75);
+    }
+}
+
+@media (max-width: 420px) {
+    .table {
+        grid-template-columns: 1fr;
+        width: 90%;
+    }
+    
+    .header-cell {
+        display: none;
+    }
+    
+    .table__cell {
+        font-size: calc(var(--index-font) * 1.3);
+        border-radius: 5px;
+    }
+    
+    .cell {
+        display: flex;
+        flex-direction: column;
+        
+    }
+    
+    .cell__header {
+        display: inline-block;
+    }
+
+    .last-row-child {
+        margin-bottom: calc(var(--index-font) * 1.5);
+    }
+} 
